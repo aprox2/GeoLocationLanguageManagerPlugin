@@ -120,9 +120,9 @@ class LanguageManagerPlugin : BasePlugin
             try
             {
                 await _sqlConnection.ExecuteAsync($@"
-                INSERT INTO `playerLanguages` (`steamID`, `playerISOCode`) VALUES ({steamID}, '{playerISO}')
+                INSERT INTO `playerLanguages` (`steamID`, `playerISOCode`) VALUES (@SteamID, @PlayerISO)
                 ON CONFLICT(`steamID`) DO UPDATE SET `playerISOCode` = '{playerISO}'
-            ");
+            ", new {  });
             } catch (Exception e)
             {
                 Console.WriteLine(e.Message);
