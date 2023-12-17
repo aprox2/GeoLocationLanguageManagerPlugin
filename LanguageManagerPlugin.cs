@@ -15,7 +15,7 @@ class LanguageManagerPlugin : BasePlugin
     public override string ModuleAuthor => "aproxje";
     public override string ModuleName => "Language Manager Plugin";
 
-    public override string ModuleVersion => "0.0.1";
+    public override string ModuleVersion => "0.0.2";
     private SqliteConnection? _sqlConnection { get; set; }
 
     private PlayerLanguageManager playerLanguageManager = new PlayerLanguageManager();
@@ -121,8 +121,8 @@ class LanguageManagerPlugin : BasePlugin
             {
                 await _sqlConnection.ExecuteAsync($@"
                 INSERT INTO `playerLanguages` (`steamID`, `playerISOCode`) VALUES (@SteamID, @PlayerISO)
-                ON CONFLICT(`steamID`) DO UPDATE SET `playerISOCode` = '{playerISO}'
-            ", new {  });
+                ON CONFLICT(`steamID`) DO UPDATE SET `playerISOCode` = @PlayerISO
+            ", new { SteamID = steamID, PlayerISO = playerISO });
             } catch (Exception e)
             {
                 Console.WriteLine(e.Message);
