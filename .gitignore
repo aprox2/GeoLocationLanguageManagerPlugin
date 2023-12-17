@@ -1,0 +1,7 @@
+/.vs/
+/.git/
+/.idea/
+/bin/
+/obj/
+/LanguageManagerPlugin.sln
+/GeoLite2-Country.mmdb
