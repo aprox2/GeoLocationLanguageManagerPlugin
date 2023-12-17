@@ -7,7 +7,6 @@ using MaxMind.GeoIP2;
 using System.Globalization;
 using Microsoft.Data.Sqlite;
 using Dapper;
-using System.Numerics;
 
 namespace LanguageManagerPlugin;
 
@@ -20,8 +19,6 @@ class LanguageManagerPlugin : BasePlugin
     private SqliteConnection? _sqlConnection { get; set; }
 
     private PlayerLanguageManager playerLanguageManager = new PlayerLanguageManager();
-
-    const string testIp = "94.30.134.33";
 
     public override void Load(bool hotReload)
     {
